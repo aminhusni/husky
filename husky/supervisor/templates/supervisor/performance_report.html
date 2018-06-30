@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1>Status Today </h1>
+<h2>{{ day }} </h2>
+<h3>Location: {{ location_name }}<br> Location ID: {{ location_id }}</h3>
+<br>
+<h2>Total Feedbacks: {{ total_feedback }}</h2>
+<h3>Good</h3>
+<h3>☆☆☆☆☆ : {{ five }}</h3>
+<h3>☆☆☆☆ : {{ four }}</h3>
+<h3>☆☆☆ : {{ three }}</h3>
+<h3>☆☆ : {{ two }}</h3>
+<h3>☆ : {{ one }}</h3>
+<h3>Bad</h3>
+
+<h2>Problems so far today:</h2>
+{% for key, value in problems.items %}
+{% if value != 0 %}
+<h3> {{ key }}: {{ value }}</h3>
+{% endif %}
+{% endfor %}
+</body>
+</html>

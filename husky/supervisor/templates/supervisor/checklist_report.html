@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1>MONTHLY REPORT - CHECKLIST </h1>
+<h2>For the month of {{ month }} </h2>
+<h3>Location: {{ location_name }}<br> Location ID: {{ location_id }}</h3>
+
+<table>
+
+
+  <tr>
+    
+    <th>Date</th>
+    {% for fieldname in iternames %}
+    <th>{{ fieldname.verbose_name }}</th>
+    {% endfor %}
+    <th>Supervisor</th>
+  </tr>
+
+
+
+    {% for checklist in report %}
+    <tr>
+        <th>{{ checklist.created }}</th>
+        <th>{{ checklist.check_item_set.all.first.floor }}</th>
+        <th>{{ checklist.check_item_set.all.first.smell }}</th>
+        <th>{{ checklist.check_item_set.all.first.wall }}</th>
+        <th>{{ checklist.check_item_set.all.first.dustbin }}</th>
+        <th>{{ checklist.check_item_set.all.first.toilet_bowl }}</th>
+        <th>{{ checklist.check_item_set.all.first.urinal_bowl }}</th>
+        <th>{{ checklist.check_item_set.all.first.wash_basin }}</th>
+        <th>{{ checklist.check_item_set.all.first.mirror }}</th>
+        <th>{{ checklist.check_item_set.all.first.tissue }}</th>
+        <th>{{ checklist.check_item_set.all.first.handsoap }}</th>
+        <th>{{ checklist.employee_number.supervisor}} - {{checklist.employee_number.name}}</th>
+
+        
+    </tr>
+    {% endfor %}
+
+
+
+</table>
+
+</body>
+</html>

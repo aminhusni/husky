@@ -1,0 +1,33 @@
+<html>
+<body>
+
+<h1>Report Generator</h1>
+<h2>Please set the location of the report you intend to generate</h2>
+
+{% if locationsetting == True %}
+<h1>You are currently accessing this console from {{ pass }}</h1>
+<h3>Location: {{ location_name }}<br> Location ID: {{ location_id }}</h3>
+{% endif %}
+
+<form action="{% url 'supervisor:performance_report' %}", method="post">
+    {% csrf_token %}
+    <br>
+    Kiosk Location: 
+    <br>
+    <select name="location_id">
+        {% if locations %}
+            {% for location in locations %}
+                <option value="{{ location.location_id }}">{{ location.location_name }}</option>
+            {% endfor %}
+        {% endif %}
+    </select>
+<!--     <br>
+    Authorization Code: 
+    <br>
+    <input name="Auhorization Code" type="text"> -->
+    <input type="submit" value="SUBMIT">
+
+  </form>
+
+</body>
+</html>

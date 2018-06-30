@@ -1,0 +1,23 @@
+<h1>This is the checklist</h1>
+<br>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'supervisor:checklist_submit' %}", method="post">
+    {% csrf_token %}
+    <input type='hidden' name='supervisor_id' value='{{ supervisor_id }}' />  
+    <input type="checkbox" name="floor" value="True"> Floor<br>
+    <input type="checkbox" name="smell" value="True"> Smell<br>
+    <input type="checkbox" name="wall" value="True"> Wall<br>
+    <input type="checkbox" name="dustbin" value="True"> Dustbin<br>
+    <input type="checkbox" name="toilet_bowl" value="True"> Toilet Bowl<br>
+    <input type="checkbox" name="urinal_bowl" value="True"> Urinal Bowl<br>
+    <input type="checkbox" name="wash_basin" value="True"> Wash Basin<br>
+    <input type="checkbox" name="mirror" value="True"> Mirror<br>
+    <input type="checkbox" name="tissue" value="True"> Tissue<br>
+    <input type="checkbox" name="handsoap" value="True"> Handsoap<br>
+    <input type="submit" value="SUBMIT">
+
+  </form>

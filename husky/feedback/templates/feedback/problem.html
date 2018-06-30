@@ -1,0 +1,23 @@
+<p>WHAT IS WRONG WITH THE TOILET?</p>
+<br>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'feedback:problem_submit' %}", method="post">
+    {% csrf_token %}
+    <input type='hidden' name='feedback_id' value='{{ feedback_id }}' />  
+    <input type="checkbox" name="clogged" value="True"> Clogged<br>
+    <input type="checkbox" name="toilet_paper" value="True"> Toilet Paper<br>
+    <input type="checkbox" name="lighting" value="True"> Lighting<br>
+    <input type="checkbox" name="soap" value="True"> Soap Dispenser<br>
+    <input type="checkbox" name="hose" value="True"> Hose/Bidet<br>
+    <input type="checkbox" name="temperature" value="True"> Temperature<br>
+    <input type="checkbox" name="bowl" value="True"> Toiler Bowl<br>
+    <input type="checkbox" name="sink" value="True"> Sink<br>
+    <input type="checkbox" name="smell" value="True"> Smell<br>
+    <input type="checkbox" name="fault" value="True"> Previous User's Fault<br>
+    <input type="submit" value="SUBMIT">
+
+  </form>

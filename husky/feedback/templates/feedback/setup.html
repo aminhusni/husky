@@ -1,0 +1,33 @@
+<html>
+<body>
+
+<h1>This is an initial setup</h1>
+<h2>Please set the location of this kiosk</h2>
+
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'feedback:setlocation' %}", method="post">
+    {% csrf_token %}
+    <br>
+    Kiosk Location: 
+    <br>
+    <select name="location_id">
+        {% if locations %}
+            {% for location in locations %}
+                <option value="{{ location.location_id }}">{{ location.location_name }}</option>
+            {% endfor %}
+        {% endif %}
+    </select>
+<!--     <br>
+    Authorization Code: 
+    <br>
+    <input name="Auhorization Code" type="text"> -->
+    <input type="submit" value="SUBMIT">
+
+  </form>
+
+</body>
+</html>

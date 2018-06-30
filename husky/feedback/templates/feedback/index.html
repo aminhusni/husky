@@ -1,0 +1,19 @@
+<p>THIS IS THE FEEDBACK PAGE DESU</p>
+<br>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'feedback:rating_submit' %}", method="post">
+    {% csrf_token %}
+    <input type="radio" name="rating" value="1" checked> 1(Bad)<br>
+    <input type="radio" name="rating" value="2" checked> 2<br>
+    <input type="radio" name="rating" value="3" checked> 3<br>
+    <input type="radio" name="rating" value="4" checked> 4<br>
+    <input type="radio" name="rating" value="5" checked> 5(Good)<br>
+    <input type="submit" value="SUBMIT">
+
+  </form>
+
+  <a href="{% url 'supervisor:index' %}">SUPERVISOR SECTION</a>

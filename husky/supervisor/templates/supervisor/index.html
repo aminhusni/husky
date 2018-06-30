@@ -1,0 +1,30 @@
+<html>
+<body>
+
+<h1>SUPERVISOR SECTION</h1>
+<h2>Please set the location of this kiosk</h2>
+
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'supervisor:authenticate' %}", method="post">
+    {% csrf_token %}
+    <br>
+    Supervisor ID: 
+    <br>
+    <input type="password" name="supervisor">
+
+    <input type="submit" value="SUBMIT">
+
+  </form>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    setTimeout(function() {
+        window.location.href = "{% url 'feedback:index' %}";
+    }, 20000);
+</script>

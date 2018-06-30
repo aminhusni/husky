@@ -1,0 +1,7 @@
+<h1>What would you like to do today?</h1>
+
+{% if locationsetting == True %}
+<a href="{% url 'supervisor:checklist' %}">Submit Checklist</a><br>
+{% endif %}
+<a href="{% url 'supervisor:checklist_report_location' %}">Generate Checklist - Monthly Report</a><br>
+<a href="{% url 'supervisor:performance_report_location' %}">Today's Performance</a>
