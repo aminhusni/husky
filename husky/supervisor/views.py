@@ -249,7 +249,7 @@ def performance_report(request):
 
 
         #Calculate for today
-        target_day = datetime.now() - relativedelta(days=1)
+        target_day = datetime.now() - relativedelta(days=0)
         day_str = target_day.strftime("%A %d %b %Y")
 
         reports = Feedback.objects.filter(created__day=target_day.day, location_id=location_id).prefetch_related('problem_set')

@@ -4,9 +4,16 @@ from django.template import loader
 from feedback.models import Feedback, Problem
 from location.models import Location
 from django.shortcuts import redirect
+import logging
+from telegram.ext import Updater, CommandHandler, MessageHandler
+import telegram.ext
+
 
 
 # Create your views here.
+bot = telegram.Bot(token='574491770:AAEEuzsNjFvVUj8q6Abxd1YUdI7pduSHobA')
+chat_id = -304829808
+#Telegram
 
 def index(request):
     
@@ -101,6 +108,13 @@ def problem_submit(request):
     feedbackprev = Feedback.objects.get(pk=feedback_id)
     problems = Problem(feedback=feedbackprev, clogged=clogged, toilet_paper=toilet_paper, lighting=lighting, soap=soap, hose=hose, temperature=temperature, bowl=bowl, sink=sink, smell=smell, fault=fault)
     problems.save()
+    location_id = feedbackprev.location_id
+    location = Location.objects.get(location_id=location_id)
+    location_name = location.location_name
+
+    #Telegram Alert Part
+    alerttext = "Problem at "+location_name + "(ID: "+location_id+")"
+    bot.sendMessage(chat_id=chat_id, text=alerttext)
 
     return redirect('feedback:thankyou')
 
