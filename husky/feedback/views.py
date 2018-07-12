@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler
 import telegram.ext
+import threading
 
 
 
@@ -50,6 +51,13 @@ def rating_submit(request):
 
 def thankyou(request):
     return render(request, 'feedback/thankyou.html', None)
+
+def alert_telegram(location_name, location_id):
+    try:
+        alerttext = "Problem at "+location_name + "(ID: "+location_id+")"
+        bot.sendMessage(chat_id=chat_id, text=alerttext)
+    except:
+        pass
     
 def problem_submit(request):
 
@@ -113,8 +121,10 @@ def problem_submit(request):
     location_name = location.location_name
 
     #Telegram Alert Part
-    alerttext = "Problem at "+location_name + "(ID: "+location_id+")"
-    bot.sendMessage(chat_id=chat_id, text=alerttext)
+    bot_thread = threading.Thread(target=alert_telegram, args=[location_name, location_id])
+    bot_thread.setDaemon(False)
+    bot_thread.start()
+
 
     return redirect('feedback:thankyou')
 

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'feedback.apps.FeedbackConfig',
     'supervisor.apps.SupervisorConfig',
     'location.apps.LocationConfig',
-    'bootstrap3',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

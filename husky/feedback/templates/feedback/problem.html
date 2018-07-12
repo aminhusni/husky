@@ -1,4 +1,163 @@
-<p>WHAT IS WRONG WITH THE TOILET?</p>
+{% load staticfiles %}
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Husky_Feedbacklist</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <style>
+
+            .nopad {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            /*image gallery*/
+            .image-checkbox {
+                cursor: pointer;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                border: 4px solid transparent;
+                margin-bottom: 0;
+                outline: 0;
+            }
+            .image-checkbox input[type="checkbox"] {
+                display: none;
+            }
+            
+            .image-checkbox-checked {
+                border-color: rgb(8, 243, 0);
+            }
+            .image-checkbox .fa {
+              position: absolute;
+              color: #4A79A3;
+              background-color: #fff;
+              padding: 10px;
+              top: 0;
+              right: 0;
+            }
+            .image-checkbox-checked .fa {
+              display: block !important;
+            }
+                
+    </style>
+
+    
+
+</head>
+
+<body >
+    <h1 class="text-center" style="height:256px;font-size:100px;padding:69px;">Which Part Could We Improve?</h1>
+    
+    <form action="{% url 'feedback:problem_submit' %}", method="post">
+            {% csrf_token %}
+            <input type='hidden' name='feedback_id' value='{{ feedback_id }}' /> 
+    <div class="row justify-content-center" style="margin-top:100px;">
+            <label class="image-checkbox" >
+                <img class="img-responsive" src="{% static 'img/fault.jpg' %}" />
+                <input type="checkbox" name="fault" value="True" style="margin-right:2px;height:250px;width:250px; "/>
+                <i class="fa fa-check hidden"></i>
+            </label>
+            <label class="image-checkbox" >
+                <img class="img-responsive" src="{% static 'img/clogged.jpg' %}" />
+                <input type="checkbox" name="clogged" value="True" style="margin-right:2px;height:250px;width:250px; "/>
+                <i class="fa fa-check hidden"></i>
+            </label>
+            <label class="image-checkbox" >
+                <img class="img-responsive" src="{% static 'img/toilet_paper.jpg' %}" />
+                <input type="checkbox" name="toilet_paper" value="True" style="margin-right:2px;height:250px;width:250px; "/>
+                <i class="fa fa-check hidden"></i>
+            </label>
+            <label class="image-checkbox" >
+                <img class="img-responsive" src="{% static 'img/lighting.jpg' %}" />
+                <input type="checkbox" name="lighting" value="True" style="margin-right:2px;height:250px;width:250px; "/>
+                <i class="fa fa-check hidden"></i>
+            </label>
+            <label class="image-checkbox" >
+                <img class="img-responsive" src="{% static 'img/soap.jpg' %}" />
+                <input type="checkbox" name="soap" value="True" style="margin-right:2px;height:250px;width:250px; "/>
+                <i class="fa fa-check hidden"></i>
+            </label>
+        </div>
+        <div class="row justify-content-center" style="margin-top:1px;">
+            <label class="image-checkbox" >
+                <img class="img-responsive" src="{% static 'img/hose.jpg' %}" />
+                <input type="checkbox" name="hose" value="True" style="margin-right:2px;height:250px;width:250px; "/>
+                <i class="fa fa-check hidden"></i>
+            </label>
+            <label class="image-checkbox" >
+                <img class="img-responsive" src="{% static 'img/temperature.jpg' %}" />
+                <input type="checkbox" name="temperature" value="True" style="margin-right:2px;height:250px;width:250px; "/>
+                <i class="fa fa-check hidden"></i>
+            </label>
+            <label class="image-checkbox" >
+                <img class="img-responsive" src="{% static 'img/bowl.jpg' %}" />
+                <input type="checkbox" name="bowl" value="True" style="margin-right:2px;height:250px;width:250px; "/>
+                <i class="fa fa-check hidden"></i>
+            </label>
+            <label class="image-checkbox" >
+                <img class="img-responsive" src="{% static 'img/sink.gif' %}" />
+                <input type="checkbox" name="sink" value="True" style="margin-right:2px;height:250px;width:250px; "/>
+                <i class="fa fa-check hidden"></i>
+            </label>
+            <label class="image-checkbox" >
+                <img class="img-responsive" src="{% static 'img/smell.jpg' %}" />
+                <input type="checkbox" name="smell" value="True" style="margin-right:2px;height:250px;width:250px; "/>
+                <i class="fa fa-check hidden"></i>
+            </label>
+        </div>
+        <div class="row justify-content-center" style="margin-top:1px;">
+            <button class="btn btn-primary btn-lg" type="submit" value="SUBMIT" style="margin-right:2px;height:89px;width:245px;box-shadow:none;background-color:rgb(43,201,79);border-color:white;margin-top:30px;">SUBMIT</button>
+        </div>
+        
+
+
+    </form>
+        
+        
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+            <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+            <script>
+                    // image gallery
+                    // init the state from the input
+                    $(".image-checkbox").each(function () {
+                      if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+                        $(this).addClass('image-checkbox-checked');
+                      }
+                      else {
+                        $(this).removeClass('image-checkbox-checked');
+                      }
+                    });
+                    
+                    // sync the state to the input
+                    $(".image-checkbox").on("click", function (e) {
+                      $(this).toggleClass('image-checkbox-checked');
+                      var $checkbox = $(this).find('input[type="checkbox"]');
+                      $checkbox.prop("checked",!$checkbox.prop("checked"))
+                    
+                      e.preventDefault();
+                    });
+                    
+                    </script>
+
+
+
+
+        </body>
+
+
+
+
+
+<!-- <p>WHAT IS WRONG WITH THE TOILET?</p>
 <br>
 
 {% if error_message %}
@@ -20,4 +179,4 @@
     <input type="checkbox" name="fault" value="True"> Previous User's Fault<br>
     <input type="submit" value="SUBMIT">
 
-  </form>
+  </form> -->

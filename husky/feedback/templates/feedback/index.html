@@ -1,4 +1,49 @@
-<p>THIS IS THE FEEDBACK PAGE DESU</p>
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Husky</title>
+				<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+					<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+					</head>
+					<body style="overflow:hidden;">
+						<div class="row">
+							<div class="col">
+								<h1 class="text-center" style="height:256px;font-size:100px;padding:182px;">Please Give Us Your Feedback</h1>
+							</div>
+						</div>
+						<div class="row justify-content-center" style="margin-top:100px;">
+
+                        <form action="{% url 'feedback:rating_submit' %}", method="post">
+                                {% csrf_token %}
+							<button name="rating" value="5" class="btn btn-primary btn-lg" type="submit" style="margin-right:0px;height:250px;width:250px;box-shadow:none;background-color:rgb(43,201,79);border-color:white;">😄</button>
+							<button name="rating" value="4" class="btn btn-primary btn-lg" type="submit" style="margin-right:0px;height:250px;width:250px;box-shadow:none;background-color:rgb(24,163,2);border-color:white;">😊</button>
+							<button
+            name="rating" value="3" class="btn btn-primary btn-lg" type="submit" style="margin-right:0px;height:250px;width:250px;box-shadow:none;border-color:white;">😑</button>
+							<button name="rating" value="2" class="btn btn-primary btn-lg" type="submit" style="margin-right:0px;height:250px;width:250px;outline:none;background-color:rgb(239,244,26);box-shadow:none;border-color:white;color:rgb(0,0,0);">😕</button>
+							<button name="rating" value="1" class="btn btn-primary btn-lg"
+                type="submit" style="margin-right:0px;height:250px;width:250px;background-color:rgb(195,31,20);box-shadow:none;border-color:white;">☹️</button>
+                    </form>
+            
+                        </div>
+						<div class="row">
+							<div class="col align-self-center">
+								<p class="text-center" style="margin-right:0px;margin-left:730px;font-size:29px;">NOTIFICATION WILL BE SENT</p>
+							</div>
+						</div>
+						<div></div>
+						<div class="clearfix"></div>
+						<script src="{% static 'js/jquery.min.js' %}"></script>
+						<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+					</body>
+				</html>
+
+
+
+<!-- <p>THIS IS THE FEEDBACK PAGE DESU</p>
 <br>
 
 {% if error_message %}
@@ -16,4 +61,4 @@
 
   </form>
 
-  <a href="{% url 'supervisor:index' %}">SUPERVISOR SECTION</a>
+  <a href="{% url 'supervisor:index' %}">SUPERVISOR SECTION</a> -->
