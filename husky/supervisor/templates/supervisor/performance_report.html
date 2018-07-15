@@ -1,6 +1,11 @@
+<!-- Amin Husni - 2018 -->
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 <head>
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <style>
 table, th, td {
     border: 1px solid black;
@@ -9,10 +14,14 @@ table, th, td {
 </head>
 <body>
 
-<h1>Status Today </h1>
-<h2>{{ day }} </h2>
-<h3>Location: {{ location_name }}<br> Location ID: {{ location_id }}</h3>
+        <div class="row">
+                <div class="col">
+<h1 class="text-center" style="padding:60px">Status Today </h1>
+<h2 class="text-center">{{ day }} </h2>
+<h3 class="text-center">Location: {{ location_name }}<br> Location ID: {{ location_id }}</h3>
 <br>
+</div></div>
+<div class="row"><div class="col-md-6 text-center">
 <h2>Total Feedbacks: {{ total_feedback }}</h2>
 <h3>Good</h3>
 <h3>☆☆☆☆☆ : {{ five }}</h3>
@@ -21,16 +30,23 @@ table, th, td {
 <h3>☆☆ : {{ two }}</h3>
 <h3>☆ : {{ one }}</h3>
 <h3>Bad</h3>
-
+</div>
+<div class="col-md-6 text-center">
 <h2>Problems so far today:</h2>
 {% for key, value in problems.items %}
 {% if value != 0 %}
 <h3> {{ key }}: {{ value }}</h3>
 {% endif %}
 {% endfor %}
+</div>
+</div>
 
-
+<div class="row">
+    <div class="col text-center">
 <iframe src="http://digimakerlab.cf:3000/d-solo/4KRthjVik/digital-usage-monitoring-panel?panelId=11&orgId=1&from=1530814807802&to=1530858007803" width="450" height="200" frameborder="0"></iframe>
+</div></div>
 </body>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </html>
 

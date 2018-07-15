@@ -1,5 +1,13 @@
+<!-- Amin Husni - 2018 -->
+
 <h1>Something went wrong! </h1>
 
 {% if error %}
     <p><strong>{{ error }}</strong></p>
 {% endif %}
+
+<script type="text/javascript">
+    setTimeout(function() {
+        window.location.href = "{% url 'feedback:index' %}";
+    }, 2000);
+</script>

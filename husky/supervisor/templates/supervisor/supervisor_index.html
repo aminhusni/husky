@@ -1,7 +1,54 @@
-<h1>What would you like to do today?</h1>
+{% load staticfiles %}
 
-{% if locationsetting == True %}
-<a href="{% url 'supervisor:checklist' %}">Submit Checklist</a><br>
-{% endif %}
-<a href="{% url 'supervisor:checklist_report_location' %}">Generate Checklist - Monthly Report</a><br>
-<a href="{% url 'supervisor:performance_report_location' %}">Today's Performance</a>
+<!-- Amin Husni - 2018 -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Husky</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body style="overflow:hidden;">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center" style="height:256px;font-size:100px;padding:140px;">What Would You Like To Do Today?</h1>
+        </div>
+    </div>
+    {% if locationsetting == True %}
+    <div class="row justify-content-center" style="margin-top:100px;">
+            <form action="{% url 'supervisor:checklist' %}">
+        <button class="btn btn-primary btn-lg" type="submit" style="margin-right:2px;height:76px;width:613px;box-shadow:none;background-color:rgb(43,201,79);border-color:white;margin-top:51px;">SUBMIT CHECKLIST</button>
+    </form>
+    </div>
+    {% endif %}
+    
+        <div class="row justify-content-center" style="margin-top:-40px;">
+                <form action="{% url 'supervisor:checklist_report_location' %}">
+        <button class="btn btn-primary btn-lg" type="submit" style="margin-right:2px;height:76px;width:613px;box-shadow:none;background-color:rgb(43,201,79);border-color:white;margin-top:51px;">MONTHLY REPORT</button>
+    </form>
+    </div>
+    
+        <div class="row justify-content-center" style="margin-top:-40px;">
+                <form action="{% url 'supervisor:performance_report_location' %}">
+            <button class="btn btn-primary btn-lg" type="submit" style="margin-right:2px;height:76px;width:613px;box-shadow:none;background-color:rgb(43,201,79);border-color:white;margin-top:51px;">DAILY PERFORMANCE STATUS</button>
+        </form>
+        </div>
+        <div class="row justify-content-center" style="margin-top:-40px;">
+                <form action="{% url 'feedback:index' %}">
+            <button class="btn btn-primary btn-lg" type="submit" style="margin-right:2px;height:76px;width:613px;box-shadow:none;background-color:rgb(211, 47, 47);border-color:white;margin-top:51px;">EXIT</button>
+        </form>
+        </div>
+        
+    <div class="clearfix"></div>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
+

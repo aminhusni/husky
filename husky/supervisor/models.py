@@ -1,3 +1,4 @@
+#Amin Husni - 2018
 from django.db import models
 
 class Supervisor(models.Model):

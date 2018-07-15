@@ -1,5 +1,7 @@
 {% load staticfiles %}
 
+<!-- Amin Husni - 2018 -->
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,9 +12,15 @@
 					<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 					</head>
                     <body style="overflow:hidden;">
+                            
+                                    <a href="{% url 'supervisor:index' %}" >
+                                            <img class="img-responsive" src="{% static 'img/white.jpg' %}" />
+                                    </a>
+                                
+
                             <div class="row">
                                 <div class="col">
-                                    <h1 class="text-center" style="height:256px;font-size:100px;margin-top:65px;"><br><strong>We Appreciate Your Feedback</strong></h1>
+                                    <h1 class="text-center" style="height:256px;font-size:100px;margin-top:0px;"><br><strong>We Appreciate Your Feedback</strong></h1>
                                 </div>
                             </div>
                             <div class="row">

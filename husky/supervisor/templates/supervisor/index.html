@@ -1,30 +1,58 @@
+<!-- Amin Husni - 2018 -->
+
+{% load staticfiles %}
+<!DOCTYPE html>
 <html>
-<body>
 
-<h1>SUPERVISOR SECTION</h1>
-<h2>Please set the location of this kiosk</h2>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Husky</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body style="overflow:hidden;">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center" style="height:256px;font-size:100px;padding:140px;">Supervisor Section</h1>
+        </div>
+    </div>
+    <form action="{% url 'supervisor:authenticate' %}", method="post">
+            {% csrf_token %}
+    <div class="row justify-content-center" style="margin-top:80px;">
+        <div class="col"></div>
+        <div class="col"><input class="form-control-lg" type="password" name="supervisor" placeholder="ENTER SUPERVISOR PIN" style="width:590px;"></div>
+        <div class="col"></div>
+    </div>
+    <div class="row justify-content-center" style="margin-top:0px;">
+        <button class="btn btn-primary btn-lg" value="SUBMIT" type="submit" style="margin-right:2px;height:76px;width:613px;box-shadow:none;background-color:rgb(43,201,79);border-color:white;margin-top:50px;">LOGIN</button>
+    </div>
+    <div class="row justify-content-center" style="margin-top:0px;">
+        <button class="btn btn-primary btn-lg" value="cancel" type="submit" formaction="{% url 'feedback:index' %}"style="margin-right:2px;height:76px;width:613px;box-shadow:none;background-color:rgb(220, 0, 0);border-color:white;margin-top:20px;">CANCEL</button>
+    </div>
 
 
-{% if error_message %}
-    <p><strong>{{ error_message }}</strong></p>
-{% endif %}
-
-<form action="{% url 'supervisor:authenticate' %}", method="post">
-    {% csrf_token %}
-    <br>
-    Supervisor ID: 
-    <br>
-    <input type="password" name="supervisor">
-
-    <input type="submit" value="SUBMIT">
-
-  </form>
-
+</form>
+    <div class="clearfix"></div>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
+
 </html>
+
 
 <script type="text/javascript">
     setTimeout(function() {
         window.location.href = "{% url 'feedback:index' %}";
     }, 20000);
 </script>
+
+
+
+
+
+
+
+
+

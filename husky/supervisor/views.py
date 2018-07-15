@@ -1,3 +1,4 @@
+#Amin Husni - 2018
 from django.shortcuts import render
 from django.shortcuts import redirect
 from supervisor.models import Supervisor, Checklist, Check_item
@@ -8,6 +9,8 @@ from datetime import timedelta
 from datetime import datetime
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
+from django.http import HttpResponse
+from django.template import Context, loader
 
 #Decorators
 #Authenticate page request if the user has signed in and has it expired. Expiry extended
@@ -163,6 +166,8 @@ def error(request):
 
 @check_token
 def checklist_report(request):
+        #This is the monthly report generator. 
+
         location_id = request.POST['location_id']
         print(location_id)
 
@@ -186,10 +191,54 @@ def checklist_report(request):
                 'iternames': iternames,
                 'location_name': location_name,
                 'location_id': location_id,
-
         }
 
         return render(request, 'supervisor/checklist_report.html', context)
+
+@check_token
+def report_csv(request):
+        
+        #This is the monthly report generator. 
+
+        response = HttpResponse(content_type='text/html')
+        response['Content-Disposition'] = 'attachment; filename="monthlyreport.csv"'
+
+        location_id = request.POST['location_id']
+        print(location_id)
+
+        lokasi = Location.objects.filter(location_id=location_id).first()
+        location_name = lokasi.location_name
+        #Calculate for last month
+        target_month = datetime.now() - relativedelta(months=0)
+        month_str = target_month.strftime("%B")
+
+        report = Checklist.objects.filter(created__month=target_month.month, location_id=location_id).prefetch_related('check_item_set')
+        fieldnames = Check_item._meta.get_fields()
+
+        #Skip first two elements
+        iternames = iter(fieldnames)
+        next(iternames)
+        next(iternames)
+
+        list_of_col = []
+
+        for fieldname in iternames:
+                list_of_col.append(fieldname.verbose_name)
+
+        render_list_of_col = ','.join(list_of_col)
+
+        context = {
+                'month': month_str,
+                'report': report,
+                'iternames': render_list_of_col,
+                'location_name': location_name,
+                'location_id': location_id,
+        }
+
+        t = loader.get_template('supervisor/monthly_report.txt')
+        response.write(t.render(context))
+
+        return response
 
 @check_token
 def checklist_report_location(request):

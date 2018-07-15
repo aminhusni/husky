@@ -1,3 +1,4 @@
+#Amin Husni - 2018
 from django.urls import path
 from . import views
 from django.conf.urls import url
@@ -14,4 +15,5 @@ urlpatterns = [
     path('checklist_report_location.html', views.checklist_report_location, name='checklist_report_location'),
     path('performance_report_location.html', views.performance_report_location, name='performance_report_location'),
     path('performance_report.html', views.performance_report, name='performance_report'),
+    path('report_csv.html', views.report_csv, name='report_csv'),
 ]

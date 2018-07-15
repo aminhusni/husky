@@ -1,6 +1,10 @@
+<!-- Amin Husni - 2018 -->
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <style>
 table, th, td {
     border: 1px solid black;
@@ -49,6 +53,14 @@ table, th, td {
 
 
 </table>
+<form action="{% url 'supervisor:authenticate' %}", method="post">
+        {% csrf_token %}
+<div class="row " style="margin-top:0px;">
+        <button class="btn btn-primary btn-lg" value="cancel" type="submit" formaction="{% url 'supervisor:checklist_report_location' %}"style="margin-right:2px;height:76px;width:613px;box-shadow:none;background-color:rgb(220, 0, 0);border-color:white;margin-top:20px;">BACK</button>
+    </div>
+</form>
 
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>
