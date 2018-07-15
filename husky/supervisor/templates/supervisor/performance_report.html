@@ -12,7 +12,7 @@ table, th, td {
 }
 </style>
 </head>
-<body>
+<body style="overflow:hidden;">
 
         <div class="row">
                 <div class="col">
@@ -44,7 +44,13 @@ table, th, td {
 <div class="row">
     <div class="col text-center">
 <iframe src="http://digimakerlab.cf:3000/d-solo/4KRthjVik/digital-usage-monitoring-panel?panelId=11&orgId=1&from=1530814807802&to=1530858007803" width="450" height="200" frameborder="0"></iframe>
-</div></div>
+<form action="{% url 'supervisor:authenticate' %}", method="post">
+        {% csrf_token %}
+
+        <button class="btn btn-primary btn-lg" value="cancel" type="submit" formaction="{% url 'supervisor:supervisor_index' %}"style="margin-right:2px;height:76px;width:613px;box-shadow:none;background-color:rgb(220, 0, 0);border-color:white;margin-top:5px;">BACK</button>
+
+</form></div></div>
+
 </body>
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>

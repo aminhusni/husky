@@ -3,5 +3,4 @@ from .models import Feedback, Problem
 
 # Register your models here.
 
-admin.site.register(Feedback)
-admin.site.register(Problem)
+
