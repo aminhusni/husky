@@ -60,7 +60,7 @@
     <form action="{% url 'feedback:problem_submit' %}", method="post">
             {% csrf_token %}
             <input type='hidden' name='feedback_id' value='{{ feedback_id }}' /> 
-    <div class="row justify-content-center" style="margin-top:100px;">
+    <div class="row justify-content-center" style="margin-top:0px;">
             <label class="image-checkbox" style="margin-right:100px;margin-bottom:20px">
                 <img class="img-responsive" src="{% static 'img/others.png' %}" /><font color="white"><br>&nbsp;&nbsp;&nbsp;Previous User's Fault</font>
                 <input type="checkbox" name="fault" value="True" style="margin-right:2px;height:250px;width:250px; "/>
@@ -117,8 +117,8 @@
                 <i class="fa fa-check hidden"></i>
             </label>
         </div>
-        <div class="row justify-content-center" style="margin-top:1px;">
-            <button class="btn btn-primary btn-lg" type="submit" value="SUBMIT" style="margin-right:2px;height:89px;width:245px;box-shadow:none;background-color:transparent;border-color:transparent;margin-top:30px;"><img style="margin-right:20px;cursor:pointer;width:200px;"  src="{% static 'img/submit.png' %}" />
+        <div class="row justify-content-center" style="margin-top:0px;">
+            <button class="btn btn-primary btn-lg" type="submit" value="SUBMIT" style="margin-right:2px;height:89px;width:245px;box-shadow:none;background-color:transparent;border-color:transparent;margin-top:0px;"><img style="margin-right:20px;cursor:pointer;width:200px;"  src="{% static 'img/submit.png' %}" />
             </button>
         </div>
         
