@@ -53,68 +53,73 @@
 
 </head>
 
-<body style="overflow:hidden;">
-    <h1 class="text-center" style="height:256px;font-size:100px;padding:69px;">Which Part Could We Improve?</h1>
-    
+<body style="background:url( {% static 'img/bg.jpg' %} );background-size:120%;font-family:Verdana;">
+    <div class="row">
+    <span class="second" style="font-size:30px;margin-top:0;padding:20px;float:left;"><font color="white">Select 1 or more and SUBMIT</font></span>
+</div>
     <form action="{% url 'feedback:problem_submit' %}", method="post">
             {% csrf_token %}
             <input type='hidden' name='feedback_id' value='{{ feedback_id }}' /> 
     <div class="row justify-content-center" style="margin-top:100px;">
             <label class="image-checkbox" >
-                <img class="img-responsive" src="{% static 'img/fault.jpg' %}" />
+                <img class="img-responsive" src="{% static 'img/others.png' %}" /><font color="white"><br>&nbsp;&nbsp;&nbsp;Previous User's Fault</font>
                 <input type="checkbox" name="fault" value="True" style="margin-right:2px;height:250px;width:250px; "/>
                 <i class="fa fa-check hidden"></i>
             </label>
             <label class="image-checkbox" >
-                <img class="img-responsive" src="{% static 'img/clogged.jpg' %}" />
+                
+                <img class="img-responsive" src="{% static 'img/choked.png' %}" />
+                <figcaption><font color="white" style="display:inline-block; text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;Toilet Bowl Clogged</font></figcaption>
+            
                 <input type="checkbox" name="clogged" value="True" style="margin-right:2px;height:250px;width:250px; "/>
                 <i class="fa fa-check hidden"></i>
             </label>
             <label class="image-checkbox" >
-                <img class="img-responsive" src="{% static 'img/toilet_paper.jpg' %}" />
+                <img class="img-responsive" src="{% static 'img/no-toilet-paper.png' %}" /><figcaption><font color="white" style="display:inline-block; text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Toilet Paper</font></figcaption>
                 <input type="checkbox" name="toilet_paper" value="True" style="margin-right:2px;height:250px;width:250px; "/>
                 <i class="fa fa-check hidden"></i>
             </label>
             <label class="image-checkbox" >
-                <img class="img-responsive" src="{% static 'img/lighting.jpg' %}" />
+                <img class="img-responsive" src="{% static 'img/faulty-lighting.png' %}" /><figcaption><font color="white" style="display:inline-block; text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lighting</font></figcaption>
                 <input type="checkbox" name="lighting" value="True" style="margin-right:2px;height:250px;width:250px; "/>
                 <i class="fa fa-check hidden"></i>
             </label>
             <label class="image-checkbox" >
-                <img class="img-responsive" src="{% static 'img/soap.jpg' %}" />
+                <img class="img-responsive" src="{% static 'img/soap-dispencer-faulty.png' %}" /><figcaption><font color="white" style="display:inline-block; text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soap</font></figcaption>
                 <input type="checkbox" name="soap" value="True" style="margin-right:2px;height:250px;width:250px; "/>
                 <i class="fa fa-check hidden"></i>
             </label>
         </div>
         <div class="row justify-content-center" style="margin-top:1px;">
             <label class="image-checkbox" >
-                <img class="img-responsive" src="{% static 'img/hose.jpg' %}" />
+                <img class="img-responsive" src="{% static 'img/flexible-hose-detached.png' %}" /><figcaption><font color="white" style="display:inline-block; text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hose</font></figcaption>
                 <input type="checkbox" name="hose" value="True" style="margin-right:2px;height:250px;width:250px; "/>
                 <i class="fa fa-check hidden"></i>
             </label>
             <label class="image-checkbox" >
-                <img class="img-responsive" src="{% static 'img/temperature.jpg' %}" />
+                <img class="img-responsive" src="{% static 'img/toilet-temperature.png' %}" /><figcaption><font color="white" style="display:inline-block; text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temperature</font></figcaption>
                 <input type="checkbox" name="temperature" value="True" style="margin-right:2px;height:250px;width:250px; "/>
                 <i class="fa fa-check hidden"></i>
             </label>
             <label class="image-checkbox" >
-                <img class="img-responsive" src="{% static 'img/bowl.jpg' %}" />
+                <img class="img-responsive" src="{% static 'img/loose.png' %}" /><figcaption><font color="white" style="display:inline-block; text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seat Cover</font></figcaption>
                 <input type="checkbox" name="bowl" value="True" style="margin-right:2px;height:250px;width:250px; "/>
                 <i class="fa fa-check hidden"></i>
             </label>
             <label class="image-checkbox" >
-                <img class="img-responsive" src="{% static 'img/sink.gif' %}" />
+                <img class="img-responsive" src="{% static 'img/basin-tap.png' %}" /><figcaption><font color="white" style="display:inline-block; text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tap Faulty</font></figcaption>
                 <input type="checkbox" name="sink" value="True" style="margin-right:2px;height:250px;width:250px; "/>
                 <i class="fa fa-check hidden"></i>
             </label>
             <label class="image-checkbox" >
-                <img class="img-responsive" src="{% static 'img/smell.jpg' %}" />
+                <img class="img-responsive" src="{% static 'img/foul-smell.png' %}" /><figcaption><font color="white" style="display:inline-block; text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Foul Smell</font></figcaption>
                 <input type="checkbox" name="smell" value="True" style="margin-right:2px;height:250px;width:250px; "/>
                 <i class="fa fa-check hidden"></i>
             </label>
         </div>
         <div class="row justify-content-center" style="margin-top:1px;">
-            <button class="btn btn-primary btn-lg" type="submit" value="SUBMIT" style="margin-right:2px;height:89px;width:245px;box-shadow:none;background-color:rgb(43,201,79);border-color:white;margin-top:30px;">SUBMIT</button>
+            <button class="btn btn-primary btn-lg" type="submit" value="SUBMIT" style="margin-right:2px;height:89px;width:245px;box-shadow:none;background-color:transparent;border-color:transparent;margin-top:30px;"><img style="margin-right:20px;cursor:pointer;width:200px;"  src="{% static 'img/submit.png' %}" />
+            </button>
         </div>
         
 

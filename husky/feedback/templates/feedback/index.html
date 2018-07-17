@@ -1,15 +1,43 @@
 {% load staticfiles %}
 
 <!-- Amin Husni - 2018 -->
+<head>
+		<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Husky</title>
+				<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+					<link rel="stylesheet" href="{% static 'css/old.css' %}">
+					</head>
+<body style="background:url( {% static 'img/bg.jpg' %} );background-size:120%;font-family:Verdana;">
+    <table style="width:100%;text-align:center;font-weight:bold;color:#fff;table-layout: fixed">
 
-<!DOCTYPE html>
+        <tr class="first">
+            <td colspan="5"><h1 style="font-size:60px;margin-top:280px;padding-bottom:50px;">Good Day<br />Please rate our toilet</h1></td>
+		</tr>
+		<form action="{% url 'feedback:rating_submit' %}", method="post">
+				{% csrf_token %}
+        <tr class="first" style="font-size:30px;">
+				<td><button name="rating" value="5" type="submit" style="background:transparent;border: 0px solid #4992B7"><img class="vote" rel="5" src="{% static 'img/excellent.png' %}" /><br /><font color="white">Excellent</font></button></td>
+				<td><button name="rating" value="4" type="submit" style="background:transparent;border: 0px solid #4992B7"><img class="vote" rel="4" src="{% static 'img/good.png' %}" /><br /><font color="white">Good</font></button></td>
+				<td><button name="rating" value="3" type="submit" style="background:transparent;border: 0px solid #4992B7"><img class="vote" rel="3" src="{% static 'img/average.png' %}" /><br /><font color="white">Average</font></button></td>
+				<td><button name="rating" value="2" type="submit" style="background:transparent;border: 0px solid #4992B7"><img class="vote" rel="2" src="{% static 'img/poor.png' %}" /><br /><font color="white">Poor</font></button></td>
+				<td><button name="rating" value="1" type="submit" style="background:transparent;border: 0px solid #4992B7"><img class="vote" rel="1" src="{% static 'img/sad.png' %}" /><br /><font color="white">Sad</font></button></td>
+		</tr>
+	</form>
+        <tr class="first">
+            <td colspan="5"><br /><br /><br /><br /><br /><br /><span style="display:block;font-size:20px;">This screen is sanitised regularly</span></td>
+        </tr>
+</table>
+</body>
+
+<!-- <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<title>Husky</title>
 				<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-					<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+					<link rel="stylesheet" href="{% static 'css/old.css' %}">
 					</head>
 					<body style="overflow:hidden;">
 						<div class="row">
@@ -44,4 +72,4 @@
 				</html>
 
 
-
+ -->
